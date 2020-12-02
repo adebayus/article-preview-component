@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <Script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+    </Script>
+    <script src="svg-inject.min.js"></script>
   <!-- <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png"> -->
 
   <link rel="stylesheet" href="./css/index.css" type="text/css">
@@ -20,7 +22,7 @@
 <body>
   <div class="container">
     <div class="wrapper-article">
-      <img src="https://i.postimg.cc/4xNWxKGX/drawers.jpg" alt="" width="100%" height="100%"> 
+      <img class="drawers"src="https://i.postimg.cc/4xNWxKGX/drawers.jpg" alt="" width="100%" height="100%"> 
       <div class="article-content">
         <h1>Shift the overall look and feel by adding these wonderful 
           touches to furniture in your home
@@ -31,6 +33,19 @@
           to help you make any room feel complete.
         </p>
         <div class="profile">
+            <div id="sosmed-bottom" class="sosmed-bottom isClose" >
+              <p class="bottom-share">SHARE</p>
+              <span class="icon-sosmed">
+                <img class="img-icon-sosmed" width="15px" height="15px"src="images/icon-facebook.svg" alt="">
+              </span>
+              <span class="icon-sosmed">
+                <img class="img-icon-sosmed" width="15px" height="15px"src="images/icon-twitter.svg" alt="">
+              </span>
+              <span class="icon-sosmed">
+                <img class="img-icon-sosmed" width="15px" height="15px"src="images/icon-pinterest.svg" alt="">
+              </span>
+           </div>
+
           <div class="profile-detail">
             <img src="images/avatar-michelle.jpg" alt="">
             <div class="detail">
@@ -39,8 +54,68 @@
             </div>
           </div>
           <div class="forward-button">
-            <span>
-              <img src="images/icon-share.svg" width="15px" height="15px" alt="">
+            <script> 
+            $(document).ready(function() {
+              $(window).resize(function(){
+                $('#tooltips').addClass('isClose');
+                $('#sosmed-bottom').addClass('isClose');
+                $("#forward").css({"background-color": "#ecf2f8" })
+                $("#image-forward").attr("src","images/icon-share.svg");
+              })
+            });
+            
+              function isShow() {
+               
+                const mq = window.matchMedia( "(min-width: 900px)" );
+                if (mq.matches)
+                 {  
+                   var isCloseE = $('#tooltips').hasClass('isClose');
+                   if (isCloseE){
+                     $('#tooltips').removeClass('isClose');
+                     $("#forward").css({"background-color": "hsl(214, 17%, 51%)" })
+                     $("#image-forward").attr("src","images/icon-share-white.svg");
+                     }
+                     else {
+                       $('#tooltips').addClass('isClose');
+                       $("#forward").css({"background-color": "#ecf2f8" })
+                       $("#image-forward").attr("src","images/icon-share.svg");
+                       }
+                } 
+                else 
+                {
+                  var isCloseE = $('#sosmed-bottom').hasClass('isClose');
+                   if (isCloseE){
+                     $('#sosmed-bottom').removeClass('isClose');
+                     $("#forward").css({"background-color": "hsl(214, 17%, 51%)" })
+                     $("#image-forward").attr("src","images/icon-share-white.svg");
+                     }
+                     else {
+                       $('#sosmed-bottom').addClass('isClose');
+                       $("#forward").css({"background-color": "#ecf2f8" })
+                       $("#image-forward").attr("src","images/icon-share.svg");
+                       }
+
+                    // alert("window width > 900px");
+                }
+                // var isCloseE = document.getElementsByClassName("tooltip isClose").length;
+ 
+              }
+            </script>
+            <div id="tooltips" class="tooltip isClose" >
+               <p class="tooltip-share">SHARE</p>
+            <span class="icon-sosmed">
+              <img width="15px" height="15px"src="images/icon-facebook.svg" alt="">
+            </span>
+            <span class="icon-sosmed">
+              <img width="15px" height="15px"src="images/icon-twitter.svg" alt="">
+            </span>
+            <span class="icon-sosmed">
+              <img width="15px" height="15px"src="images/icon-pinterest.svg" alt="">
+            </span>
+
+            </div>
+            <span id="forward" class="forward-icon"  onclick="isShow()">
+              <img id="image-forward" src="images/icon-share.svg" onload="SVGInject(this)" width="15px" height="15px" alt="">
             </span>   
           </div>
         </div>
@@ -48,23 +123,6 @@
       </div>
     </div>
   </div>
-
-
-  <!-- Shift the overall look and feel by adding these wonderful 
-  touches to furniture in your home -->
-
-  <!-- Shift the overall look and feel by adding these wonderful 
-  touches to furniture in your home
-
-  Ever been in a room and felt like something was missing? Perhaps 
-  it felt slightly bare and uninviting. I’ve got some simple tips 
-  to help you make any room feel complete.
-
-  Michelle Appleton
-  28 Jun 2020
-
-  Share -->
-  
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
